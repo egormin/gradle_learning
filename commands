@@ -1,0 +1,30 @@
+# Write text
+println 'Hello World'
+
+# Apply plugin
+apply plugin: 'java'
+
+# Short calls
+gradle ta = gradle tasks
+gradle tC = gradle testClasses
+
+# Exclude -x
+gradle tC -x compileJava
+
+# Gradle wrapper. pack gradle to execute in on other hosts
+Gradle wrapper 
+
+# to define which version we want to use ub wrapper, we can 
+1) define it in build.gradle
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.4.1'
+}
+
+2) perform: gradle wrapper
+
+# В settings.gradle описывается иерархия модулей
+include ':common'  если хотим добавить модуль common
+
+Собрать только модуль common - gradle :com:compJ   вызываем таску compileJava в модуле common
+
+# Dependencies
