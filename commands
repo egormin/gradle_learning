@@ -1,12 +1,30 @@
-# Write text
-println 'Hello World'
+https://github.com/webdizz/sbs-gradle
+git clean -df
+git reset --hard 3a2ed47
 
-# Apply plugin
-apply plugin: 'java'
+## Start gradle
+gradle
+
+## Show gradle tasks
+gradle tasks
+gradle tasks --all # additional tasks (dynamic tasks)
+
+## Show gradle projects and subprojects
+gradle projects
+
+## Build code (will be created directory build)
+gradle build
+
+## Clean build directory
+gradle clean
+
+## Clean and build code
+gradle clean build
 
 # Short calls
 gradle ta = gradle tasks
 gradle tC = gradle testClasses
+gradle cle b = gradle clean build
 
 # Exclude -x
 gradle tC -x compileJava
