@@ -31,7 +31,7 @@ allprojects { currproject ->
                 mavenLocal()
                 mavenCentral()
                 jcenter()
-                maven {url 'http://artifactory.eu.compumark.com/artifactory/maven'}
+                maven {url 'http://artifactory.mycompany.com/artifactory/maven'}
         }
 }
 ```
