@@ -21,6 +21,7 @@ include ':one',':two'
 ```
 
 ### Working with dependencies
+To define repositories where gradle will get libs.
 ```
 allprojects { currproject ->
         repositories {
@@ -31,4 +32,9 @@ allprojects { currproject ->
         }
 }
 ```
+`allprojects` - это значит для всех проектов, в т.ч. и вложенных.
+`mavenLocal` - это локальная дирректория m2.
+`mavenLocal` - mavenCentral репозиторий
+`mavenLocal` - jcenter репозиторий
+`maven {}`   - artifactory или nexus репозиторий
 
