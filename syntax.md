@@ -62,6 +62,12 @@ dependencies {
 	compile 'org.projectlombok:lombok:1.16.14'
 }
 ```
+Or:
+```
+dependencies {
+	compile group:'org.projectlombok', name: 'lombok', version:: '1.16.14'
+}
+```
 #### Show all dependencies
 ```
 gradle dependencies
