@@ -176,7 +176,22 @@ Output:
 ```
 > Configure project :
 Without doLast
+
 ```
+## Parameters defining
+Define path were keep src files for code and for tests:
+```
+sourceSets {
+        main.java.srcDirs = ['scr/main']
+	test.java.srcDirs = ['scr/test']
+}
+```
+or so:
+```
+sourceSets.main.java.srcDirs = ['source']
+sourceSets.test.java.srcDirs = ['test']
+```
+
 
 
 
