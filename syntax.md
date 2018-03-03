@@ -20,7 +20,8 @@ task wrapper(type: Wrapper) {
 include ':one',':two'
 ```
 
-### Working with dependencies
+
+## Working with dependencies
 To define repositories where gradle will get libs.
 ```
 allprojects { currproject ->
@@ -41,4 +42,16 @@ allprojects { currproject ->
 `mavenLocal` - jcenter репозиторий.
 
 `maven {}`   - artifactory или nexus репозиторий.
+
+#### Dependencies defining for all subprojects
+```
+subprojects {
+        apply plugin: 'java'
+        dependencies {
+                compile 'org.slf4j:slf4j-api:1.7.25'
+                testCompile 'org.mockito:mockito-core:2.7.18',
+                        'junit:junit:4.12'
+        }
+}
+```
 
