@@ -131,5 +131,12 @@ task printParam {
         doLast { println 'Hello World!' }
 }
 ```
+To run this task: `gradle printParam`.
+
+Output:
+```
+> Task :printParam
+Hello World!
+```
 
 
