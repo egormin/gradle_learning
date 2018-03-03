@@ -66,4 +66,9 @@ We should create settings.gradle with text: include ':one',':two'
 # Short call
 gradle :com:compJ # call tast compileJava in module common
 
-# Dependencies
+####### DEPENDENCIES #######
+# Show all dependencies
+gradle dependencies
+
+# Only for separate configuration
+ gradle dep --configuration testCompile
