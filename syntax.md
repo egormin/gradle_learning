@@ -109,3 +109,16 @@ After:
 +--- org.mockito:mockito-core:2.7.18
 |    \--- org.objenesis:objenesis:2.5
 ```
+
+## gradle.properties using
+We can define different variables in this file.
+
+**gradle.properties:**
+```
+mockitoVersion=2.7.10
+```
+To use it in **build.gradle:**
+```
+testCompile "org.mockito:mockito-core:$mockitoVersion"
+```
+
