@@ -83,10 +83,18 @@ dependencies {
                 }
         }
 ```
+After:
 ```
 \--- junit:junit:4.12
 ```
 #### To exclude group of dependencies
+Before:
+```
++--- org.mockito:mockito-core:2.7.18
+|    +--- net.bytebuddy:byte-buddy:1.6.11
+|    +--- net.bytebuddy:byte-buddy-agent:1.6.11
+|    \--- org.objenesis:objenesis:2.5
+```
 ```
  dependencies {
                 compile 'org.slf4j:slf4j-api:1.7.25'
@@ -96,4 +104,8 @@ dependencies {
          }
 
 ```
-
+After:
+```
++--- org.mockito:mockito-core:2.7.18
+|    \--- org.objenesis:objenesis:2.5
+```
