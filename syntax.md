@@ -54,4 +54,10 @@ subprojects {
         }
 }
 ```
+#### To devine dependencies for subproject we should in build.gradle of those project add
+```
+dependencies {
+	compile 'org.projectlombok:lombok:1.16.14'
+}
+```
 
