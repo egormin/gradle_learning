@@ -138,5 +138,19 @@ Output:
 > Task :printParam
 Hello World!
 ```
+Custom task with variable passed as cli parameter
+```
+task printParam_cli {
+        doLast { println givenParameter }
+}
+```
+To run this task: `gradle printParam_cli -PgivenParameter='Hi!'`.
+
+Output:
+```
+> Task :printParam_cli
+Hi!
+```
+
 
 
