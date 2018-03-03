@@ -211,6 +211,33 @@ Now if we run the command `java -jar ...` wi'll get:
 ```
 [Hello Gradle, Hello Egor]
 ```
+If we added some dependencies and built jar file it will not work because of we have no our dependencies in jar archive.
+To add them:
+```
+jar {
+        from configurations.compile.collect { zipTree it }
+        manifest.attributes "Main-Class": "net.egor.gradleTutorial.Main"
+}
+```
+It will be added as tree in jar file.
+
+To archive any folder:
+```
+jar {
+        from configurations.compile.collect { zipTree it }
+        from configurations.compile.collect { fileTree("src") }
+        manifest.attributes "Main-Class": "net.egor.gradleTutorial.Main"
+}
+```
+Will bi archived src as well. Path is from build.gradle path.
+
+Now output will be:
+```
+[Hello Gradle, Hello Egor]
+[hELLO gRADLE, hELLO eGOR]
+```
+
+
 
 
 
