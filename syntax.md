@@ -119,6 +119,17 @@ mockitoVersion=2.7.10
 ```
 To use it in **build.gradle:**
 ```
-testCompile "org.mockito:mockito-core:$mockitoVersion"
+dependencies {
+	testCompile "org.mockito:mockito-core:$mockitoVersion"
+}
 ```
+
+## Custom tasks
+
+```
+task printParam {
+        doLast { println 'Hello World!' }
+}
+```
+
 
