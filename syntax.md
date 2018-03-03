@@ -22,6 +22,8 @@ include ':one',':two'
 
 
 ## Working with dependencies
+**Транзитивная звисимость** - это зависимость зависимости.
+
 To define repositories where gradle will get libs.
 ```
 allprojects { currproject ->
@@ -54,10 +56,44 @@ subprojects {
         }
 }
 ```
-#### To devine dependencies for subproject we should in build.gradle of those project add
+#### To define dependencies for subproject we should in build.gradle of those project add
 ```
 dependencies {
 	compile 'org.projectlombok:lombok:1.16.14'
 }
+```
+#### Show all dependencies
+```
+gradle dependencies
+```
+#### To exclude some dependency 
+На уровне модуля (т.е. исключим по artifact id).
+```
+\--- junit:junit:4.12
+     \--- org.hamcrest:hamcrest-core:1.3
+```
+
+```
+dependencies {
+                compile 'org.slf4j:slf4j-api:1.7.25'
+                testCompile 'org.mockito:mockito-core:2.7.18',
+                'junit:junit:4.12'
+                testCompile ('junit:junit:4.12') {
+                      exclude module: 'hamcrest-core'
+                }
+        }
+```
+```
+\--- junit:junit:4.12
+```
+#### To exclude group of dependencies
+```
+ dependencies {
+                compile 'org.slf4j:slf4j-api:1.7.25'
+                testCompile ('org.mockito:mockito-core:2.7.18'){
+                        exclude group: 'net.bytebuddy'
+                }
+         }
+
 ```
 
