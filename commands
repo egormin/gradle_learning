@@ -21,28 +21,49 @@ gradle clean
 ## Clean and build code
 gradle clean build
 
-# Short calls
+## Short calls
 gradle ta = gradle tasks
 gradle tC = gradle testClasses
 gradle cle b = gradle clean build
+gradle cle tC = gradle clean test Compile
+gradle pTR = gradle processTestResources
 
-# Exclude -x
+## Exclude -x
 gradle tC -x compileJava
+gradle cle tC -x pTR = gradle clean testClasses -exclude processTestResources
 
-# Gradle wrapper. pack gradle to execute in on other hosts
-Gradle wrapper 
+## Help 
+gradle help               # Common help how to use gradle
+gradle help --task clean  # Help by separate task
 
-# to define which version we want to use ub wrapper, we can 
+
+####### GRADLE WRAPPER ####### 
+This is one of innovations from gradle.
+It genegates self installable gradle file. So we would have 2 files: gradlew for Linux and gradlew.bat for windows
+It allows us clone ready project and to start build it without necessarily of create and configure gradle file.
+So gradle will install by himself and porform needed task.
+Gradlew downloads packages from resource: http://services.gradle.org/distributions/
+
+# Run task to generate wrapper
+gradle wrapper     # Will be created gradlew with the same version as now
+
+# To change version of wrapper
 1) define it in build.gradle
 task wrapper(type: Wrapper) {
 	gradleVersion = '3.4.1'
 }
+2) gradle wrapper      # to regenerate gradlew with new version
+3) ./gradlew -version  # to check
 
-2) perform: gradle wrapper
 
+####### GRADLE MULTIMODULE PROJECTS ####### 
 # В settings.gradle описывается иерархия модулей
 include ':common'  если хотим добавить модуль common
 
-Собрать только модуль common - gradle :com:compJ   вызываем таску compileJava в модуле common
+For example, we have 2 folders - one and two. Each of them contains build.gradle.
+We should create settings.gradle with text: include ':one',':two'
+
+# Short call
+gradle :com:compJ # call tast compileJava in module common
 
 # Dependencies
