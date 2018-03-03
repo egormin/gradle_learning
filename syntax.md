@@ -191,6 +191,20 @@ or so:
 sourceSets.main.java.srcDirs = ['source']
 sourceSets.test.java.srcDirs = ['test']
 ```
+If we run our jar file with command: 
+```
+java -jar build/libs/Gradle_tutorial.jar "Hello Gradle" "Hello Egor"
+```
+We get an error about manifest. To avoid this, we need use construction in build.gradle:
+```
+jar {
+        manifest.attributes "Main-Class": "net.egor.gradleTutorial.Main"
+}
+```
+Now if we run the command `java -jar ...` wi'll get:
+```
+[Hello Gradle, Hello Egor]
+```
 
 
 
