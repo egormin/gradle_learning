@@ -27,3 +27,7 @@ Add in build.gradle string:
 ```
 apply from: file("${rootProject.projectDir}/gradle/publishing.gradle")
 ```
+To run:
+```
+gradle publish -PuploadVersion=1.1.1[YourName]
+```
