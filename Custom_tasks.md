@@ -242,6 +242,18 @@ task writeGreeting {
 }
 ```
 
+### Tasks dependencies
+```
+check.dependsOn(integTest)  OR check.dependsOn 'integTest'
+```
+Это говорит о том, что таска check не может выполниться без таски integTest. Т.е. перед check будет выполнена integTest.
+Or:
+```
+task printParam_cli {
+        dependsOn: 'integTest'
+        doLast { println givenParameter }
+}
+```
 
 
 
