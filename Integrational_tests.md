@@ -4,33 +4,29 @@
 gradle/integTest.gradle:
 ```
 sourceSets {
-        integTest {
-                compileClasspath += main.output + test.output
-                runtimeClasspath += main.output + test.output
-        }
+    integTest {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
 }
 
 configurations {
-        integTestCompile.extendsFrom testCompile
-        integTestRuntime.extendsFrom testRuntime
+    integTestCompile.extendsFrom testCompile
+    integTestRuntime.extendsFrom testRuntime
 }
 
 task integTest(type: Test){
-        testClassesDir = sourceSets.integTest.output.classesDir
-        classpath = sourceSets.integTest.runtimeClasspath
-        shouldRunAfter 'test'
+    testClassesDir = sourceSets.integTest.output.classesDir
+    classpath = sourceSets.integTest.runtimeClasspath
+    shouldRunAfter 'test'
 }
-
-check.dependsOn(integTest)
 ```
 build.gradle:
 ```
 subprojects { project ->
     apply plugin: 'java'
-
-    apply from:                                                      // Added these lines
-    file("${rootProject.projectDir}/gradle/integTest.gradle")        // Added these lines
-
+    apply from: file("${rootProject.projectDir}/gradle/integTest.gradle")  // It was added
+    
     dependencies {
         compile "org.slf4j:slf4j-api:$slf4jVersion"
 
