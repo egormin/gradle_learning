@@ -1,0 +1,62 @@
+repositories {
+        mavenCentral()
+}
+
+apply plugin: 'java'
+
+sourceSets {
+        main.java.srcDir 'src/main'
+}
+
+dependencies {
+        compile 'org.apache.commons:commons-lang3:3.3.2'
+}
+
+jar {
+        from configurations.compile.collect { zipTree it }
+        manifest.attributes 'Main-Class': 'net.egor.gradleTutorial.Main'
+}
+
+task hello {
+        group 'greeting'
+        description 'Greets you'
+}
+
+task printParam {
+        println 'Always'
+        doLast { println 'First' }
+        doLast { println 'Second' }
+        doFirst { println 'Third' }
+} << {
+        println 'something'
+}
+
+task varsTesting {
+        ext.myVar = 'Hey, how\'s going'        // configuration phase
+        doLast { println "Greeting: $myVar" }  // execution phase
+}
+
+task runJar(type: Exec, dependsOn: jar) {
+        executable 'java'
+        args '-jar', "$jar.archivePath", 'Hello World'
+}
+
+task run (type: JavaExec, dependsOn: classes) {
+        main 'net.egor.gradleTutorial.Main'
+        classpath sourceSets.main.runtimeClasspath
+        args 'Hello World'
+}
+
+task hello2 {
+        onlyIf { true } //any condition
+} << {
+        println 'It is true'
+}
+
+hello2.enabled = false
+
+task writeGreeting {
+        outputs.file file('greeting.txt')
+} << {
+        file('greeting.txt').text = 'Hello, people\n'
+}
