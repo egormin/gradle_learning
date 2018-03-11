@@ -35,3 +35,7 @@ subprojects { project ->
     }
 }
 ```
+To run:
+```
+gradle integTest
+```
