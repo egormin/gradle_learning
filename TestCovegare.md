@@ -68,4 +68,4 @@ task jacocoIntegrationTestReport(type: JacocoReport) {
 
 check.dependsOn jacocoIntegrationTestReport
 ```
-Report will be in file `jacocoIntegTestReport.xml`.
+Report will be in file `jacocoIntegTestReport.xml` and in html.
