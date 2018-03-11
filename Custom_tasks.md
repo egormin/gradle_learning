@@ -23,7 +23,13 @@ Greeting tasks
 --------------
 hello - Greets you
 ```
-
+Можно написать и так, будет то же самое:
+```
+task hello {
+        group 'greeting'
+        description 'Greets you'
+}
+```
 
 Должно быть имя и тело таски.
 Тело состоит из экшенов. Экшены можно задавать через **doLast** или **doFist**. DoLast - таск выполнится последним из всех тасков. doFirst- первым
@@ -40,6 +46,47 @@ Output:
 > Task :printParam
 Hello World!
 ```
+Tasks queues:
+```
+task printParam {
+        doLast { println 'First' }
+        doLast { println 'Second' }
+        doFirst { println 'Third' }
+}
+```
+Output:
+```
+> Task :printParam
+Third
+First
+Second
+```
+Short notation of task with doLast:
+```
+task helloShort << { println 'short notation' }
+```
+Or:
+```
+task printParam {
+        doLast { println 'First' }
+        doLast { println 'Second' }
+        doFirst { println 'Third' }
+} << {
+        println 'something'
+}
+```
+Output:
+```
+> Task :printParam
+Third
+First
+Second
+something
+```
+
+
+
+
 Custom task with variable passed as cli parameter
 ```
 task printParam_cli {
