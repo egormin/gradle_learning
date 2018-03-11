@@ -39,3 +39,24 @@ tasks.create('releaseNotes') {
     outputs.dir destDir
 }
 ```
+Output:
+```
+Here is a list of notes regarding the latest release:
+
+Bugs:
+ 1 Somethings is broken
+ 2 Somethings else is broken
+
+Features:
+```
+Темплейт выглядит таким образом:
+```
+-bash-4.2# cat releaseNotes.tmpl.txt
+Here is a list of notes regarding the latest release:
+
+Bugs:
+@bugs@
+
+Features:
+@features@
+```
