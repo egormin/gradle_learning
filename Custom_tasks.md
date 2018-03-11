@@ -95,7 +95,8 @@ Output:
 > Task :varsTesting
 Greeting: Hey, how's going
 ```
-Custom task with variable passed as cli parameter
+#### Custom task with variable passed as cli parameter.
+Удобно, например, для девелоперов использовать дефолтный параметр, а для разных энвайронментов передавать параметр при запуске.
 ```
 task printParam_cli {
         doLast { println givenParameter }
