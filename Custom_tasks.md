@@ -250,7 +250,7 @@ check.dependsOn(integTest)  OR check.dependsOn 'integTest'
 Or:
 ```
 task printParam_cli {
-        dependsOn: 'integTest'
+        dependsOn 'integTest'
         doLast { println givenParameter }
 }
 ```
