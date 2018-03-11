@@ -271,5 +271,11 @@ task printParam_cli {
 ```
 Т.е. mustRunAfter и shouldRunAfter
 
+Output:
+```
+> Configure project :
+Test directory is not empty, will execute tests
+```
+
 
 
