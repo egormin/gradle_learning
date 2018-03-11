@@ -83,10 +83,18 @@ First
 Second
 something
 ```
-
-
-
-
+Variables in custom tasks:
+```
+task varsTesting {
+        ext.myVar = 'Hey, how\'s going'        // configuration phase
+        doLast { println "Greeting: $myVar" }  // execution phase
+}
+```
+Output:
+```
+> Task :varsTesting
+Greeting: Hey, how's going
+```
 Custom task with variable passed as cli parameter
 ```
 task printParam_cli {
@@ -119,9 +127,22 @@ task printParam_cli {
 }
 ```
 This task will always perform, For example, `gradle clean`:
-Output:
+Output (In configuration phase, not execution phase):
 ```
 > Configure project :
 Without doLast
 
+```
+
+### To run java from gradle:
+```
+jar {
+        from configurations.compile.collect { zipTree it }
+        manifest.attributes 'Main-Class': 'net.egor.gradleTutorial.Main'
+}
+
+task runJar(type: Exec, dependsOn: jar) {
+        executable 'java'
+        args '-jar', "$jar.archivePath", 'Hello World'
+}
 ```
