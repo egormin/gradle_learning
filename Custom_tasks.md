@@ -146,3 +146,11 @@ task runJar(type: Exec, dependsOn: jar) {
         args '-jar', "$jar.archivePath", 'Hello World'
 }
 ```
+Здесь `$jar` берется из таска `jar`, `archivePath` это свойство таска jar. Строка выглядит как `java -jar <path> Hello World`
+Output:
+```
+Starting process 'command 'java''. Working directory: /GITs/Gradle_tutorial Command: java -jar /GITs/Gradle_tutorial/build/libs/Gradle_tutorial.jar Hello World
+Successfully started process 'command 'java''
+[Hello World]
+[hELLO wORLD]
+```
