@@ -255,6 +255,21 @@ task printParam_cli {
 }
 ```
 
+### Tasks Ordering
+```
+ task areTestsExist {
+        if (file("${projectDir}/src/test/java")
+              .listFiles()
+              .findAll{it!=null}
+              .isEmpty()) {
+            println 'Test directory is empty'
+        } else {
+            println 'Test directory is not empty, will execute tests'
+        }
+    }
+    test.mustRunAfter areTestsExist    // Это
+```
+Т.е. mustRunAfter и shouldRunAfter
 
 
 
