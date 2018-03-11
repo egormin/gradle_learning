@@ -146,6 +146,15 @@ task runJar(type: Exec, dependsOn: jar) {
         args '-jar', "$jar.archivePath", 'Hello World'
 }
 ```
+Or runJar could be:
+```
+task runJar {
+        type Exec
+        dependsOn jar
+        executable 'java'
+        args '-jar', "$jar.archivePath", 'Hello World'
+}
+```
 Здесь `$jar` берется из таска `jar`, `archivePath` это свойство таска jar. Строка выглядит как `java -jar <path> Hello World`
 Output:
 ```
@@ -154,3 +163,85 @@ Successfully started process 'command 'java''
 [Hello World]
 [hELLO wORLD]
 ```
+Можно запустить и без таска Jar:
+```
+task run (type: JavaExec, dependsOn: classes) {
+        main 'net.egor.gradleTutorial.Main'
+        classpath sourceSets.main.runtimeClasspath
+        args 'Hello World'
+}
+```
+В этом случае код будет собран и запущен в этом таске
+Output:
+```
+> Task :run
+[Hello World]
+[hELLO wORLD]
+```
+
+### Conditions in tasks:
+```
+task hello2 {
+        onlyIf { true } //any condition
+} << {
+        println 'It is true'
+}
+```
+Output:
+```
+> Task :hello2
+It is true
+```
+However if:
+```
+task hello2 {
+        onlyIf { false } //any condition
+} << {
+        println 'It is true'
+}
+```
+Will be no output.
+
+And if we write:
+```
+task hello2 {
+        onlyIf { true } //any condition
+} << {
+        println 'It is true'
+}
+
+hello2.enabled = false
+```
+Will be no output.
+
+### Task for writing to a file:
+```
+task writeGreeting << {
+        file('greeting.txt').text = 'Hello, people\n'
+}
+```
+Output:
+```
+-bash-4.2# cat greeting.txt
+Hello, people
+```
+Write to file only if text doesn't match:
+```
+task writeGreeting {
+        onlyIf { file('greeting.txt').text != 'Hello, people\n' }
+        doLast { file('greeting.txt').text = 'Hello, people\n' }
+}
+```
+Or:
+```
+task writeGreeting {
+        outputs.file file('greeting.txt')
+} << {
+        file('greeting.txt').text = 'Hello, people\n'
+}
+```
+
+
+
+
+
