@@ -1,4 +1,30 @@
 ## Custom tasks
+Простейший таск выглядит так:
+```
+task hello
+```
+Output (`gradle tasks --all`):
+```
+Other tasks
+-----------
+compileJava - Compiles main Java source.
+compileTestJava - Compiles test Java source.
+hello
+processResources - Processes main resources.
+processTestResources - Processes test resources.
+```
+Добавим таску группу и описание:
+```
+task hello(group: 'greeting', description: 'Greets you')
+```
+Output:
+```
+Greeting tasks
+--------------
+hello - Greets you
+```
+
+
 Должно быть имя и тело таски.
 Тело состоит из экшенов. Экшены можно задавать через **doLast** или **doFist**. DoLast - таск выполнится последним из всех тасков. doFirst- первым
 
