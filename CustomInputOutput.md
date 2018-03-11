@@ -31,3 +31,5 @@ Start with command:
 ```
 gradle releaseNotes
 ```
+
+Первый раз таск будет выполнен, второй раз будет пропущен, т.к. уже выполнялся, т.е. incremental build.
